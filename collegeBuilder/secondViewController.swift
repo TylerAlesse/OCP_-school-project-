@@ -125,7 +125,7 @@ class secondViewController: UIViewController, UIImagePickerControllerDelegate, U
         items?.numberOfEssays = (essayNumber.text!)
         items?.reqTesting = (requiredTesting.text!)
        // items?.datepicker = (dateTextField.text!)
-        
+        //
         var error: NSError?
         
         do
