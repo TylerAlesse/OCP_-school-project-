@@ -41,12 +41,12 @@
 		2100C6D81C84C34800FDE0BD /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewController.swift; path = ../TableViewController.swift; sourceTree = "<group>"; };
 		214161A11BD95E2000963E9B /* prosConsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = prosConsViewController.swift; path = ../prosConsViewController.swift; sourceTree = "<group>"; };
 		215B9B5C1BF5135A0039C619 /* NetCollegeTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetCollegeTwo.swift; path = ../NetCollegeTwo.swift; sourceTree = "<group>"; };
-		216C910E1C6E59F3002EFE98 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Item+CoreDataProperties.swift"; path = "../Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		216C910E1C6E59F3002EFE98 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		21A2D1E61C5FD9120041F374 /* CoredataTableViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoredataTableViewViewController.swift; path = ../CoredataTableViewViewController.swift; sourceTree = "<group>"; };
 		21AE53B91C7B8C0800C49BD1 /* SecondVCItem+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SecondVCItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		21AE53BA1C7B8C0800C49BD1 /* SecondVCItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondVCItem.swift; sourceTree = "<group>"; };
 		21AE53BD1C7B915B00C49BD1 /* DetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsVC.swift; sourceTree = "<group>"; };
-		21CC2E2A1C59470500A52372 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Item.swift; path = ../Item.swift; sourceTree = "<group>"; };
+		21CC2E2A1C59470500A52372 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		21DD69C11BF2754E00C82BA2 /* NetCollege.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetCollege.swift; path = ../NetCollege.swift; sourceTree = "<group>"; };
 		D7A3E2331A8290E3006D8C87 /* OCP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OCP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7A3E2371A8290E3006D8C87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -86,6 +86,8 @@
 				21AE53B91C7B8C0800C49BD1 /* SecondVCItem+CoreDataProperties.swift */,
 				21AE53BA1C7B8C0800C49BD1 /* SecondVCItem.swift */,
 				D7D1477B1A8BCE7700A14D28 /* secondViewController.swift */,
+				216C910E1C6E59F3002EFE98 /* Item+CoreDataProperties.swift */,
+				21CC2E2A1C59470500A52372 /* Item.swift */,
 				D7A3E2351A8290E3006D8C87 /* collegeBuilder */,
 				D7A3E24E1A8290E4006D8C87 /* collegeBuilderTests */,
 				D7A3E2341A8290E3006D8C87 /* Products */,
@@ -106,8 +108,6 @@
 			children = (
 				2100C6D81C84C34800FDE0BD /* TableViewController.swift */,
 				D7A3E2381A8290E3006D8C87 /* AppDelegate.swift */,
-				216C910E1C6E59F3002EFE98 /* Item+CoreDataProperties.swift */,
-				21CC2E2A1C59470500A52372 /* Item.swift */,
 				D7A3E25D1A829488006D8C87 /* College.swift */,
 				21AE53BD1C7B915B00C49BD1 /* DetailsVC.swift */,
 				21A2D1E61C5FD9120041F374 /* CoredataTableViewViewController.swift */,
@@ -399,7 +399,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Burke.OCP;
 				PRODUCT_NAME = OCP;
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -416,7 +416,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Burke.OCP;
 				PRODUCT_NAME = OCP;
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

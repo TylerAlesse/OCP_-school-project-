@@ -95,25 +95,18 @@ class prosConsViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)
     {
-        if editingStyle == UITableViewCellEditingStyle.Delete
-        {
-            if tableView == prosTableView
-            {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            if tableView == prosTableView {
                 colleges.removeAtIndex(indexPath.row)
                 tableView.reloadData()
-            }
-            else
-            {
+            } else {
                 collegesTwo.removeAtIndex(indexPath.row)
                 tableView.reloadData()
             }
         }
     }
     
-    func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool
-    {
-        return true
-    }
+    func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool { return true }
     
     func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath)
     {
@@ -121,5 +114,9 @@ class prosConsViewController: UIViewController, UITableViewDelegate, UITableView
         colleges.removeAtIndex(sourceIndexPath.row)
         colleges.insert(college, atIndex: destinationIndexPath.row)
     }
-
+    
+    /*
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+    } */
 }
