@@ -50,11 +50,9 @@ class CoredataTableViewViewController: UIViewController, UITableViewDataSource, 
         self.collegeTableView.reloadData()
     }
     
-    override func viewWillAppear(animated: Bool)
-    {
-        collegeTableView.reloadData()
-    }
-    ///////////////////////////////Jimmy changed theese
+    override func viewWillAppear(animated: Bool) { collegeTableView.reloadData() }
+    
+    /// Jimmy changed theese
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
 //        if collegeTableView.tag == 0

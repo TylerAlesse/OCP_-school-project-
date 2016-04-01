@@ -19,13 +19,8 @@ class prosConsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         if tableView == prosTableView
-        {
-            return colleges.count
-        }
-        else
-        {
-            return collegesTwo.count
-        }
+        { return colleges.count }
+        else { return collegesTwo.count }
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -114,9 +109,4 @@ class prosConsViewController: UIViewController, UITableViewDelegate, UITableView
         colleges.removeAtIndex(sourceIndexPath.row)
         colleges.insert(college, atIndex: destinationIndexPath.row)
     }
-    
-    /*
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-    } */
 }

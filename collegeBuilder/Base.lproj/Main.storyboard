@@ -583,7 +583,6 @@
         <!--Navigation Controller-->
         <scene sceneID="Sxm-Ok-z4V">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="b8G-xu-Sv8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xP0-OL-X6z" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -596,6 +595,7 @@
                         <segue destination="1oG-f4-Jbb" kind="relationship" relationship="rootViewController" id="BfC-He-Oj0"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b8G-xu-Sv8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1021" y="3087"/>
         </scene>
@@ -729,6 +729,6 @@
         <image name="teacher reccomendations" width="1110" height="84"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7Eb-KN-jiz"/>
+        <segue reference="8rl-Ju-DbB"/>
     </inferredMetricsTieBreakers>
 </document>

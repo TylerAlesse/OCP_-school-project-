@@ -59,7 +59,7 @@
 		D7A3E2501A8290E4006D8C87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7A3E2511A8290E4006D8C87 /* collegeBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = collegeBuilderTests.swift; sourceTree = "<group>"; };
 		D7A3E25D1A829488006D8C87 /* College.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = College.swift; path = ../College.swift; sourceTree = "<group>"; };
-		D7D1477B1A8BCE7700A14D28 /* secondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = secondViewController.swift; path = collegeBuilder/secondViewController.swift; sourceTree = "<group>"; };
+		D7D1477B1A8BCE7700A14D28 /* secondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = secondViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +85,6 @@
 			children = (
 				21AE53B91C7B8C0800C49BD1 /* SecondVCItem+CoreDataProperties.swift */,
 				21AE53BA1C7B8C0800C49BD1 /* SecondVCItem.swift */,
-				D7D1477B1A8BCE7700A14D28 /* secondViewController.swift */,
 				216C910E1C6E59F3002EFE98 /* Item+CoreDataProperties.swift */,
 				21CC2E2A1C59470500A52372 /* Item.swift */,
 				D7A3E2351A8290E3006D8C87 /* collegeBuilder */,
@@ -106,15 +105,16 @@
 		D7A3E2351A8290E3006D8C87 /* collegeBuilder */ = {
 			isa = PBXGroup;
 			children = (
+				D7A3E23F1A8290E3006D8C87 /* Main.storyboard */,
+				21A2D1E61C5FD9120041F374 /* CoredataTableViewViewController.swift */,
+				D7D1477B1A8BCE7700A14D28 /* secondViewController.swift */,
+				214161A11BD95E2000963E9B /* prosConsViewController.swift */,
 				2100C6D81C84C34800FDE0BD /* TableViewController.swift */,
-				D7A3E2381A8290E3006D8C87 /* AppDelegate.swift */,
 				D7A3E25D1A829488006D8C87 /* College.swift */,
 				21AE53BD1C7B915B00C49BD1 /* DetailsVC.swift */,
-				21A2D1E61C5FD9120041F374 /* CoredataTableViewViewController.swift */,
-				214161A11BD95E2000963E9B /* prosConsViewController.swift */,
-				D7A3E23F1A8290E3006D8C87 /* Main.storyboard */,
 				21DD69C11BF2754E00C82BA2 /* NetCollege.swift */,
 				215B9B5C1BF5135A0039C619 /* NetCollegeTwo.swift */,
+				D7A3E2381A8290E3006D8C87 /* AppDelegate.swift */,
 				D7A3E2421A8290E3006D8C87 /* Images.xcassets */,
 				D7A3E2441A8290E3006D8C87 /* LaunchScreen.xib */,
 				D7A3E23A1A8290E3006D8C87 /* collegeBuilder.xcdatamodeld */,
