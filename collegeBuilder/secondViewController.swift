@@ -24,11 +24,11 @@ class secondViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet var letterOrForm: UISegmentedControl!
     @IBOutlet var requiredTesting: UITextField!
     @IBOutlet var commonApp: UISegmentedControl!
+    
     @IBOutlet var imageView: UIImageView!
     var imagePicker = UIImagePickerController()
     
     var selectedCollege : Item!
-    
     @IBOutlet var locationEditingTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
