@@ -32,19 +32,13 @@ class secondViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet var locationEditingTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
-  
-
-    
     
     let coreDataDB = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
-    
     var items:SecondVCItem!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         if let i = items {
             usernameTextField.text = "\(i.username)"
@@ -61,7 +55,6 @@ class secondViewController: UIViewController, UIImagePickerControllerDelegate, U
         let managedContext : NSManagedObjectContext = appDelegate.managedObjectContext!
         var fetchRequest = NSFetchRequest(entityName: "SecondVCItem")
         fetchRequest.returnsObjectsAsFaults = false;
-        
         
 //      var results: NSArray = managedContext.executeFetchRequest(fetchRequest, error: nil)!
 //        var logsArray = [""]
