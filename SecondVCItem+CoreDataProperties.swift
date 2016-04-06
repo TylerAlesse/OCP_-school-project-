@@ -2,7 +2,7 @@
 //  SecondVCItem+CoreDataProperties.swift
 //  OCP
 //
-//  Created by entre on 2/26/16.
+//  Created by entre on 4/5/16.
 //  Copyright © 2016 PHS. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,7 +14,7 @@ import CoreData
 
 extension SecondVCItem {
 
-    @NSManaged var commonApp: NSNumber
+    @NSManaged var commonApp: NSNumber?
     @NSManaged var datepicker: NSDate?
     @NSManaged var datepickertextfield: String?
     @NSManaged var imageView: NSData?
@@ -27,5 +27,6 @@ extension SecondVCItem {
     @NSManaged var teacherRec2: String?
     @NSManaged var teacherRec3: String?
     @NSManaged var username: String?
+    @NSManaged var name: String?
 
 }

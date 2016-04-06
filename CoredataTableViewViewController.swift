@@ -349,6 +349,7 @@ class CoredataTableViewViewController: UIViewController, UITableViewDataSource, 
             
             let nvc = segue.destinationViewController as! secondViewController
             let indexPath = collegeTableView.indexPathForSelectedRow!
+            
             nvc.selectedCollege = items[indexPath.row]
         }
     }
