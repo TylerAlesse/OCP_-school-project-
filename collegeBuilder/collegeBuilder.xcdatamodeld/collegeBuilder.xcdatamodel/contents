@@ -13,6 +13,7 @@
         <attribute name="imageView" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="letterOrForm" optional="YES" attributeType="Boolean" defaultValueString="0" syncable="YES"/>
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="numberOfEssays" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="reqTesting" optional="YES" attributeType="String" syncable="YES"/>
@@ -23,6 +24,6 @@
     </entity>
     <elements>
         <element name="Item" positionX="-54" positionY="90" width="128" height="105"/>
-        <element name="SecondVCItem" positionX="-54" positionY="72" width="128" height="240"/>
+        <element name="SecondVCItem" positionX="-54" positionY="72" width="128" height="255"/>
     </elements>
 </model>
