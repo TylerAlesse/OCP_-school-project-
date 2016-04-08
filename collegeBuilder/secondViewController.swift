@@ -48,13 +48,13 @@ class secondViewController: UIViewController, UIImagePickerControllerDelegate, U
             recTextField3.text = "\(i.teacherRec3)"
             essayNumber.text = "\(i.numberOfEssays)"
             requiredTesting.text = "\(i.reqTesting)"
-          //  dateTextField.text = "\(i.datepicker)"
+            dateTextField.text = "\(i.datepicker)"
         }
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext : NSManagedObjectContext = appDelegate.managedObjectContext!
         var fetchRequest = NSFetchRequest(entityName: "SecondVCItem")
-        fetchRequest.returnsObjectsAsFaults = false;
+        fetchRequest.returnsObjectsAsFaults = false
         
 //      var results: NSArray = managedContext.executeFetchRequest(fetchRequest, error: nil)!
 //        var logsArray = [""]
@@ -88,20 +88,16 @@ class secondViewController: UIViewController, UIImagePickerControllerDelegate, U
 //        if results != nil {
 //            self.items = results as! [SecondVCItem]
 //        }
-
         
         navigationItem.title = selectedCollege.name
-        
         locationEditingTextField.enabled = false
-        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
     }
     
     
     @IBAction func saveButton(sender: AnyObject) {
-        if items == nil
-    {
+        if items == nil {
         let storeDescription = NSEntityDescription.entityForName("SecondVCItem", inManagedObjectContext: coreDataDB!)
         var items = SecondVCItem(entity: storeDescription!, insertIntoManagedObjectContext: coreDataDB!)
     }
@@ -125,13 +121,6 @@ class secondViewController: UIViewController, UIImagePickerControllerDelegate, U
         } else {
             let a = UIAlertView(title: "SUCCESS", message: "Your College info is saved!", delegate: nil, cancelButtonTitle: "OK")
             a.show()
-//            usernameTextField.text = ""
-//            passwordTextField.text = ""
-//            requiredTesting.text = ""
-//            essayNumber.text = ""
-//            recTextField1.text = ""
-//            recTextField2.text = ""
-//            recTextField3.text = ""
             
             dismissViewControllerAnimated(true, completion: nil)
         }
