@@ -36,11 +36,12 @@ class SecondVCItem: NSManagedObject
         
         let fetchRequest = NSFetchRequest(entityName: String(SecondVCItem))
         
-        guard let name = item.name else { return nil }
+        guard let name = item.name
+            else { return nil }
         
         let predicate = NSPredicate(format: "name == %@", name)
         fetchRequest.predicate = predicate
-        
+        // let fetchedEmployees = try moc.executeFetchRequest(employeesFetch) as! [AAAEmployeeMO]
         do {
             let result = try moc.executeFetchRequest(fetchRequest).first as? SecondVCItem
             return result
