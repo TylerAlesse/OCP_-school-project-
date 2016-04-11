@@ -43,7 +43,7 @@ class SecondVCItem: NSManagedObject
         fetchRequest.predicate = predicate
         // let fetchedEmployees = try moc.executeFetchRequest(employeesFetch) as! [AAAEmployeeMO]
         do {
-            let result = try moc.executeFetchRequest(fetchRequest).first as? SecondVCItem
+            let result = try moc.executeFetchRequest(fetchRequest).last as? SecondVCItem
             return result
         } catch {
             return nil

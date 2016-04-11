@@ -171,20 +171,7 @@ class secondViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
         
         
-        //1. You need to check to see if var `items` contains a successfully returned CoreData Object casted as SecondVCItem
-        //2. Execute if statement to find out what property on the object that you want to change
-        //3. Once you do this, execute the following code:
-        
-        
-//        items.whatever
-//        
-//        do {
-//            try self.coreDataDB?.save()
-//        } catch {
-//            print("error")
-//        }
-//        
-        
+               
     }
     
 
