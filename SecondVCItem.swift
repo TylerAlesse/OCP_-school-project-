@@ -21,7 +21,7 @@ class SecondVCItem: NSManagedObject
         self.letterOrForm = letterOrForm
         self.commonApp = commonApp
         //self.imageView = imageView
-        //self.imageView = collegeImage
+        self.imageView = collegeImage
         self.location = location
         self.name = name
         

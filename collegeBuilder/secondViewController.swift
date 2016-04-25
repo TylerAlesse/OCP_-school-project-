@@ -140,11 +140,11 @@ class secondViewController: UIViewController, UIImagePickerControllerDelegate, U
         essayNumber.text = "\(i.numberOfEssays!)"
         requiredTesting.text = "\(i.reqTesting!)"
          dateTextField.text = "\(i.datepickertextfield!)"
-        //imageView.image = i.imageView
+       // imageView.image = i.collegeImage
         
-        print(i.commonApp!)
+      
         commonApp!.selectedSegmentIndex = (Int)(i.commonApp!)
-        print(commonApp.selectedSegmentIndex)
+        letterOrForm!.selectedSegmentIndex = (Int)(i.letterOrForm!)
         
         recTextField1.hidden = false
         recTextField2.hidden = false
@@ -174,7 +174,7 @@ class secondViewController: UIViewController, UIImagePickerControllerDelegate, U
             let _ = SecondVCItem(entity: storeDescription!, insertIntoManagedObjectContext: coreDataDB!)
         }
         
-        _ = SecondVCItem(teacherRec1: recTextField1.text!, teacherRec2: recTextField2.text!, teacherRec3: recTextField3.text!, username: usernameTextField.text!, password: passwordTextField.text!, datepicker: datePicker, datepickertextfield: dateTextField.text!, reqTesting: requiredTesting.text!, numberOfEssays: essayNumber.text!, letterOrForm: NSNumber(bool: false), commonApp: commonApp.selectedSegmentIndex /*NSNumber(bool: true)*/, collegeImage: nil, location: locationEditingTextField.text!, name: self.selectedCollege.name!, inManagedObjectContext: coreDataDB!)
+        _ = SecondVCItem(teacherRec1: recTextField1.text!, teacherRec2: recTextField2.text!, teacherRec3: recTextField3.text!, username: usernameTextField.text!, password: passwordTextField.text!, datepicker: datePicker, datepickertextfield: dateTextField.text!, reqTesting: requiredTesting.text!, numberOfEssays: essayNumber.text!, letterOrForm: letterOrForm.selectedSegmentIndex, commonApp: commonApp.selectedSegmentIndex /*NSNumber(bool: true)*/, collegeImage: imageView.image, location: locationEditingTextField.text!, name: self.selectedCollege.name!, inManagedObjectContext: coreDataDB!)
         
         var error: NSError?
         

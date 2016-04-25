@@ -434,36 +434,36 @@
                                 </connections>
                             </button>
                             <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uNy-LY-qrD">
-                                <rect key="frame" x="486" y="232" width="97" height="30"/>
+                                <rect key="frame" x="486" y="232" width="113" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e73-d6-NYj">
-                                <rect key="frame" x="487" y="270" width="97" height="30"/>
+                                <rect key="frame" x="487" y="270" width="112" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y6Z-nI-0bv">
-                                <rect key="frame" x="486" y="308" width="97" height="30"/>
+                                <rect key="frame" x="486" y="308" width="113" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4g-31-Lqp">
-                                <rect key="frame" x="591" y="232" width="42" height="30"/>
+                                <rect key="frame" x="607" y="232" width="48" height="30"/>
                                 <state key="normal" title="Edit"/>
                                 <connections>
                                     <action selector="editRec1:" destination="6X6-Tj-H4u" eventType="touchUpInside" id="Rvf-T3-Qpi"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kE3-f8-TIn">
-                                <rect key="frame" x="591" y="269" width="42" height="30"/>
+                                <rect key="frame" x="607" y="269" width="48" height="30"/>
                                 <state key="normal" title="Edit"/>
                                 <connections>
                                     <action selector="editRec2:" destination="6X6-Tj-H4u" eventType="touchUpInside" id="m5M-Jy-RHR"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sKf-Gd-aJw">
-                                <rect key="frame" x="591" y="307" width="42" height="30"/>
+                                <rect key="frame" x="607" y="307" width="48" height="30"/>
                                 <state key="normal" title="Edit"/>
                                 <connections>
                                     <action selector="editRec3:" destination="6X6-Tj-H4u" eventType="touchUpInside" id="Fjw-Kn-Dxp"/>
