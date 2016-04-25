@@ -5,7 +5,7 @@ import UIKit
 
 class SecondVCItem: NSManagedObject
 {
-    convenience init(teacherRec1: String, teacherRec2: String, teacherRec3: String, username: String, password: String, datepicker: UIDatePicker, datepickertextfield: String, reqTesting: String, numberOfEssays: String, letterOrForm: NSNumber, commonApp: NSNumber, image: UIImage?, location: String, name: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext)
+    convenience init(teacherRec1: String, teacherRec2: String, teacherRec3: String, username: String, password: String, datepicker: UIDatePicker, datepickertextfield: String, reqTesting: String, numberOfEssays: String, letterOrForm: NSNumber, commonApp: NSNumber, collegeImage: UIImage?, location: String, name: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext)
     {
         let entity = NSEntityDescription.entityForName("SecondVCItem", inManagedObjectContext: managedObjectContext)!
         self.init(entity: entity, insertIntoManagedObjectContext: managedObjectContext)
@@ -21,7 +21,7 @@ class SecondVCItem: NSManagedObject
         self.letterOrForm = letterOrForm
         self.commonApp = commonApp
         //self.imageView = imageView
-        //self.image = uiimage
+        //self.imageView = collegeImage
         self.location = location
         self.name = name
         

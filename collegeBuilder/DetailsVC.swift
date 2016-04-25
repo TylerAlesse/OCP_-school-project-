@@ -14,15 +14,24 @@ class DetailsVC: NSObject
     var password: String
     var essayNumber: String
     var requiredTesting: String
+    var datepickertextfield: String
+    var collegeImage: UIImage
+    var counslerForm: Int16
+    var commonApp: Int16
     
-    
-    init(usernameTextField u: String, passwordTextField p: String, essayNumber e: String, requiredTesting r: String)
+    init(usernameTextField u: String, passwordTextField p: String, essayNumber e: String, requiredTesting r: String, datepickertextfield d: String, collegeImage i: UIImage, counslerForm c: Int16, commonApp ca: Int16)
     {
         
         username = u
         password = p
         essayNumber = e
         requiredTesting = r
+        datepickertextfield = d
+        collegeImage = i
+        counslerForm = c
+        commonApp = ca
+        
+        
         
     }
     

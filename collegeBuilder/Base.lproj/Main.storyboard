@@ -526,7 +526,7 @@
                                     <action selector="saveButton:" destination="6X6-Tj-H4u" eventType="touchUpInside" id="Tl0-U2-weo"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U7i-69-gxM">
+                            <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U7i-69-gxM">
                                 <rect key="frame" x="455" y="72" width="158" height="41"/>
                                 <state key="normal" title="Pros and Cons" image="cooltext167519073045437">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -535,20 +535,30 @@
                                     <segue destination="xP0-OL-X6z" kind="show" identifier="" id="uqz-Re-qHg"/>
                                 </connections>
                             </button>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Gap-XK-Crm">
+                            <datePicker hidden="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Gap-XK-Crm">
                                 <rect key="frame" x="333" y="625" width="402" height="135"/>
                                 <date key="date" timeIntervalSinceReferenceDate="467053224.71681899">
                                     <!--2015-10-20 17:00:24 +0000-->
+                                </date>
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="473338800">
+                                    <!--2016-01-01 11:00:00 +0000-->
                                 </date>
                                 <connections>
                                     <action selector="datePicker:" destination="6X6-Tj-H4u" eventType="valueChanged" id="P8R-c3-g0K"/>
                                 </connections>
                             </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LuW-68-Mus">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LuW-68-Mus">
                                 <rect key="frame" x="621" y="525" width="87" height="30"/>
                                 <state key="normal" title="Set Deadline"/>
                                 <connections>
                                     <segue destination="fIp-rf-jPA" kind="show" id="PLj-Jv-p7f"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fx0-sx-wbi">
+                                <rect key="frame" x="607" y="558" width="114" height="30"/>
+                                <state key="normal" title="Set Deadline"/>
+                                <connections>
+                                    <action selector="datePickerHidden:" destination="6X6-Tj-H4u" eventType="touchUpInside" id="IPj-BS-Ov2"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -573,6 +583,7 @@
                         <outlet property="recTextField2" destination="e73-d6-NYj" id="A9v-sp-nzz"/>
                         <outlet property="recTextField3" destination="Y6Z-nI-0bv" id="4Eh-pg-x3o"/>
                         <outlet property="requiredTesting" destination="VBA-uQ-wss" id="Qgk-XK-zVo"/>
+                        <outlet property="setDeadline" destination="Fx0-sx-wbi" id="4YS-LZ-k1j"/>
                         <outlet property="usernameTextField" destination="Fsv-nl-eIO" id="1xw-t4-aqd"/>
                     </connections>
                 </viewController>

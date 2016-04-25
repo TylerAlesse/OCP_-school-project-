@@ -13,12 +13,10 @@ class CoredataTableViewViewController: UIViewController, UITableViewDataSource, 
 {
     @IBOutlet weak var collegeTableView: UITableView!
     var colleges = [College]()
-
+    
     let coreDataDB = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     var items = [Item]()
-    
-    
     
     override func viewDidLoad()
     {
@@ -26,11 +24,13 @@ class CoredataTableViewViewController: UIViewController, UITableViewDataSource, 
         
         self.collegeTableView.tableFooterView = UIView()
         
+        /*
         let exampleCollege = College(Name: "Example College", Location: "Unknown Location", NumberOfStudents: 100000, Image: UIImage(named: "Question")!)
         colleges.append(exampleCollege)
         
         let bradley = College(Name: "Bradley", Location: "Peoria", NumberOfStudents: 50000, Image: UIImage(named: "bradley")!)
         colleges.append(bradley)
+        */
         
         //colleges = [exampleCollege, bradley]
         
@@ -48,13 +48,15 @@ class CoredataTableViewViewController: UIViewController, UITableViewDataSource, 
         }
         
         self.collegeTableView.reloadData()
+        
+        
     }
     
     override func viewWillAppear(animated: Bool)
     {
         collegeTableView.reloadData()
     }
-    ///////////////////////////////Jimmy changed theese
+    ///////////////////////////////Jimmy changed these
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
 //        if collegeTableView.tag == 0
@@ -73,6 +75,7 @@ class CoredataTableViewViewController: UIViewController, UITableViewDataSource, 
     // Show data in TableView row
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("myCell", forIndexPath: indexPath)
 //        if collegeTableView.tag == 0
 //        {
@@ -293,19 +296,21 @@ class CoredataTableViewViewController: UIViewController, UITableViewDataSource, 
         }
         
         let collegeFinishedSwipe = UITableViewRowAction(style: .Default, title: "Done")
-        {_,_ in
-            if tableView.backgroundColor == UIColor.whiteColor()
-            {
-                tableView.backgroundColor = UIColor.greenColor()
-            }
-            else
-            {
-                tableView.backgroundColor = UIColor.whiteColor()
-            }
+        { (action, indexPath) in
+            let cellDone = self.items[indexPath.row]
             
+            //if cellDone.objectIDsForRelationshipNamed(<#T##key: String##String#>)
         }
         
-        let deleteSwipteButton = UITableViewRowAction(style: .Normal, title: "Delete") { (action, indexPath) in
+        let deleteSwipedButton = UITableViewRowAction(style: .Normal, title: "Delete") { (action, indexPath) in
+            
+            let recAlert = UIAlertController(title: "Are You Sure You Want To delete \(self.items[indexPath.row].name!)", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
+            recAlert.addAction(cancelAction)
+            
+            let addAction = UIAlertAction(title: "Delete", style: .Default)
+        {(action) -> Void in
             // Find item
             let itemDelete = self.items[indexPath.row]
             
@@ -322,12 +327,16 @@ class CoredataTableViewViewController: UIViewController, UITableViewDataSource, 
             // Remove item from TableView
             self.collegeTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         }
+            recAlert.addAction(addAction)
+            self.presentViewController(recAlert, animated: true, completion: nil)
+        }
         
         editSwipeButton.backgroundColor = UIColor.purpleColor()
-        deleteSwipteButton.backgroundColor = UIColor.redColor()
+        deleteSwipedButton.backgroundColor = UIColor.redColor()
        collegeFinishedSwipe.backgroundColor = UIColor.blueColor()
         
-        return [editSwipeButton, deleteSwipteButton, collegeFinishedSwipe]
+        //Took out editSwipteButton
+        return [deleteSwipedButton, collegeFinishedSwipe]
     }
     
     func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool

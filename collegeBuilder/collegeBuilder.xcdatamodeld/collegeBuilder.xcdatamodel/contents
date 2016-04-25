@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15C50" minimumToolsVersion="Automatic">
+    <entity name="ConsItem" representedClassName=".ConsItem" syncable="YES">
+        <attribute name="conName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="conNameTextField" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Item" representedClassName=".Item" syncable="YES">
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nameTextField" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="ProsItem" representedClassName=".ProsItem" syncable="YES">
+        <attribute name="proName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="proNameTextField" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="SecondVCItem" representedClassName=".SecondVCItem" syncable="YES">
         <attribute name="commonApp" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -25,5 +33,7 @@
     <elements>
         <element name="Item" positionX="-54" positionY="90" width="128" height="105"/>
         <element name="SecondVCItem" positionX="-54" positionY="72" width="128" height="255"/>
+        <element name="ConsItem" positionX="-54" positionY="180" width="128" height="75"/>
+        <element name="ProsItem" positionX="-45" positionY="189" width="128" height="75"/>
     </elements>
 </model>

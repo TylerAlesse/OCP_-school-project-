@@ -6,6 +6,17 @@ class prosConsViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet var prosTableView: UITableView!
     @IBOutlet var consTableView: UITableView!
     
+    var pro = [ProsItem]()
+    var con = [ConsItem]()
+    
+    let prosDB = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    
+    let consDB = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    
+    var items = [Item]()
+
+    
+    
     var colleges = [NetCollege]()
     var collegesTwo = [NetCollegeTwo]()
 

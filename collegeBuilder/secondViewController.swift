@@ -34,6 +34,7 @@ class secondViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
   
+    @IBOutlet var setDeadline: UIButton!
 
     
     
@@ -138,10 +139,33 @@ class secondViewController: UIViewController, UIImagePickerControllerDelegate, U
         recTextField3.text = "\(i.teacherRec3!)"
         essayNumber.text = "\(i.numberOfEssays!)"
         requiredTesting.text = "\(i.reqTesting!)"
-        //  dateTextField.text = "\(i.datepicker)"
+         dateTextField.text = "\(i.datepickertextfield!)"
+        //imageView.image = i.imageView
+        
+        print(i.commonApp!)
+        commonApp!.selectedSegmentIndex = (Int)(i.commonApp!)
+        print(commonApp.selectedSegmentIndex)
+        
+        recTextField1.hidden = false
+        recTextField2.hidden = false
+        recTextField3.hidden = false
     }
+    // END OF VDL
     
-    
+    @IBAction func datePickerHidden(sender: UIButton)
+    {
+        if datePicker.hidden == false
+        {
+            datePicker.hidden = true
+            setDeadline.setTitle("Set Deadline", forState: UIControlState.Normal)
+
+        }
+        else
+        {
+            datePicker.hidden = false
+            setDeadline.setTitle("Select Deadline", forState: UIControlState.Normal)
+        }
+    }
     @IBAction func saveButton(sender: AnyObject)
     {
         if items == nil
@@ -150,7 +174,7 @@ class secondViewController: UIViewController, UIImagePickerControllerDelegate, U
             let _ = SecondVCItem(entity: storeDescription!, insertIntoManagedObjectContext: coreDataDB!)
         }
         
-        _ = SecondVCItem(teacherRec1: recTextField1.text!, teacherRec2: recTextField2.text!, teacherRec3: recTextField3.text!, username: usernameTextField.text!, password: passwordTextField.text!, datepicker: datePicker, datepickertextfield: dateTextField.text!, reqTesting: requiredTesting.text!, numberOfEssays: essayNumber.text!, letterOrForm: NSNumber(bool: false), commonApp: NSNumber(bool: true), image: nil, location: locationEditingTextField.text!, name: self.selectedCollege.name!, inManagedObjectContext: coreDataDB!)
+        _ = SecondVCItem(teacherRec1: recTextField1.text!, teacherRec2: recTextField2.text!, teacherRec3: recTextField3.text!, username: usernameTextField.text!, password: passwordTextField.text!, datepicker: datePicker, datepickertextfield: dateTextField.text!, reqTesting: requiredTesting.text!, numberOfEssays: essayNumber.text!, letterOrForm: NSNumber(bool: false), commonApp: commonApp.selectedSegmentIndex /*NSNumber(bool: true)*/, collegeImage: nil, location: locationEditingTextField.text!, name: self.selectedCollege.name!, inManagedObjectContext: coreDataDB!)
         
         var error: NSError?
         
@@ -171,7 +195,7 @@ class secondViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
         
         
-               
+        
     }
     
 
@@ -247,13 +271,7 @@ class secondViewController: UIViewController, UIImagePickerControllerDelegate, U
             recAlert.addTextFieldWithConfigurationHandler { (textField) -> Void in
                 textField.placeholder = "Add Third Teacher Name"
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) {
-            (action) -> Void in
-            
-            self.recTextField1.hidden = false
-            self.recTextField2.hidden = false
-            self.recTextField3.hidden = false
-        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
         recAlert.addAction(cancelAction)
                
         let addAction = UIAlertAction(title: "Add Teachers", style: .Default)
@@ -261,6 +279,7 @@ class secondViewController: UIViewController, UIImagePickerControllerDelegate, U
             let firstTeacherField = (recAlert.textFields?[0])! as UITextField
             let secondTeacherField = (recAlert.textFields?[1])! as UITextField
             let thirdTeacherField = (recAlert.textFields?[2])! as UITextField
+            
             
             if firstTeacherField.text == ""
             {

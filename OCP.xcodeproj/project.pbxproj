@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		2100C6D91C84C34800FDE0BD /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2100C6D81C84C34800FDE0BD /* TableViewController.swift */; };
 		214161A21BD95E2000963E9B /* prosConsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214161A11BD95E2000963E9B /* prosConsViewController.swift */; };
+		215391371CC556660064B412 /* ConsItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215391331CC556660064B412 /* ConsItem+CoreDataProperties.swift */; };
+		215391381CC556660064B412 /* ConsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215391341CC556660064B412 /* ConsItem.swift */; };
+		215391391CC556660064B412 /* ProsItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215391351CC556660064B412 /* ProsItem+CoreDataProperties.swift */; };
+		2153913A1CC556660064B412 /* ProsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215391361CC556660064B412 /* ProsItem.swift */; };
 		215B9B5D1BF5135A0039C619 /* NetCollegeTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215B9B5C1BF5135A0039C619 /* NetCollegeTwo.swift */; };
 		216C910F1C6E59F3002EFE98 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216C910E1C6E59F3002EFE98 /* Item+CoreDataProperties.swift */; };
 		21A2D1E71C5FD9120041F374 /* CoredataTableViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A2D1E61C5FD9120041F374 /* CoredataTableViewViewController.swift */; };
@@ -39,15 +43,19 @@
 
 /* Begin PBXFileReference section */
 		2100C6D81C84C34800FDE0BD /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewController.swift; path = ../TableViewController.swift; sourceTree = "<group>"; };
-		214161A11BD95E2000963E9B /* prosConsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = prosConsViewController.swift; path = ../prosConsViewController.swift; sourceTree = "<group>"; };
-		215B9B5C1BF5135A0039C619 /* NetCollegeTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetCollegeTwo.swift; path = ../NetCollegeTwo.swift; sourceTree = "<group>"; };
+		214161A11BD95E2000963E9B /* prosConsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = prosConsViewController.swift; sourceTree = "<group>"; };
+		215391331CC556660064B412 /* ConsItem+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConsItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		215391341CC556660064B412 /* ConsItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsItem.swift; sourceTree = "<group>"; };
+		215391351CC556660064B412 /* ProsItem+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProsItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		215391361CC556660064B412 /* ProsItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProsItem.swift; sourceTree = "<group>"; };
+		215B9B5C1BF5135A0039C619 /* NetCollegeTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetCollegeTwo.swift; sourceTree = "<group>"; };
 		216C910E1C6E59F3002EFE98 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Item+CoreDataProperties.swift"; path = "../Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		21A2D1E61C5FD9120041F374 /* CoredataTableViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoredataTableViewViewController.swift; path = ../CoredataTableViewViewController.swift; sourceTree = "<group>"; };
-		21AE53B91C7B8C0800C49BD1 /* SecondVCItem+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SecondVCItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		21AE53BA1C7B8C0800C49BD1 /* SecondVCItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondVCItem.swift; sourceTree = "<group>"; };
+		21AE53B91C7B8C0800C49BD1 /* SecondVCItem+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SecondVCItem+CoreDataProperties.swift"; path = "../SecondVCItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		21AE53BA1C7B8C0800C49BD1 /* SecondVCItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SecondVCItem.swift; path = ../SecondVCItem.swift; sourceTree = "<group>"; };
 		21AE53BD1C7B915B00C49BD1 /* DetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsVC.swift; sourceTree = "<group>"; };
 		21CC2E2A1C59470500A52372 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Item.swift; path = ../Item.swift; sourceTree = "<group>"; };
-		21DD69C11BF2754E00C82BA2 /* NetCollege.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetCollege.swift; path = ../NetCollege.swift; sourceTree = "<group>"; };
+		21DD69C11BF2754E00C82BA2 /* NetCollege.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetCollege.swift; sourceTree = "<group>"; };
 		D7A3E2331A8290E3006D8C87 /* OCP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OCP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7A3E2371A8290E3006D8C87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7A3E2381A8290E3006D8C87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -59,7 +67,7 @@
 		D7A3E2501A8290E4006D8C87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7A3E2511A8290E4006D8C87 /* collegeBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = collegeBuilderTests.swift; sourceTree = "<group>"; };
 		D7A3E25D1A829488006D8C87 /* College.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = College.swift; path = ../College.swift; sourceTree = "<group>"; };
-		D7D1477B1A8BCE7700A14D28 /* secondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = secondViewController.swift; path = collegeBuilder/secondViewController.swift; sourceTree = "<group>"; };
+		D7D1477B1A8BCE7700A14D28 /* secondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = secondViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,9 +91,13 @@
 		D7A3E22A1A8290E3006D8C87 = {
 			isa = PBXGroup;
 			children = (
-				21AE53B91C7B8C0800C49BD1 /* SecondVCItem+CoreDataProperties.swift */,
-				21AE53BA1C7B8C0800C49BD1 /* SecondVCItem.swift */,
-				D7D1477B1A8BCE7700A14D28 /* secondViewController.swift */,
+				214161A11BD95E2000963E9B /* prosConsViewController.swift */,
+				215391331CC556660064B412 /* ConsItem+CoreDataProperties.swift */,
+				215391341CC556660064B412 /* ConsItem.swift */,
+				215391351CC556660064B412 /* ProsItem+CoreDataProperties.swift */,
+				215391361CC556660064B412 /* ProsItem.swift */,
+				21DD69C11BF2754E00C82BA2 /* NetCollege.swift */,
+				215B9B5C1BF5135A0039C619 /* NetCollegeTwo.swift */,
 				D7A3E2351A8290E3006D8C87 /* collegeBuilder */,
 				D7A3E24E1A8290E4006D8C87 /* collegeBuilderTests */,
 				D7A3E2341A8290E3006D8C87 /* Products */,
@@ -104,17 +116,17 @@
 		D7A3E2351A8290E3006D8C87 /* collegeBuilder */ = {
 			isa = PBXGroup;
 			children = (
-				2100C6D81C84C34800FDE0BD /* TableViewController.swift */,
-				D7A3E2381A8290E3006D8C87 /* AppDelegate.swift */,
+				D7A3E23F1A8290E3006D8C87 /* Main.storyboard */,
+				21A2D1E61C5FD9120041F374 /* CoredataTableViewViewController.swift */,
 				216C910E1C6E59F3002EFE98 /* Item+CoreDataProperties.swift */,
 				21CC2E2A1C59470500A52372 /* Item.swift */,
 				D7A3E25D1A829488006D8C87 /* College.swift */,
+				D7D1477B1A8BCE7700A14D28 /* secondViewController.swift */,
 				21AE53BD1C7B915B00C49BD1 /* DetailsVC.swift */,
-				21A2D1E61C5FD9120041F374 /* CoredataTableViewViewController.swift */,
-				214161A11BD95E2000963E9B /* prosConsViewController.swift */,
-				D7A3E23F1A8290E3006D8C87 /* Main.storyboard */,
-				21DD69C11BF2754E00C82BA2 /* NetCollege.swift */,
-				215B9B5C1BF5135A0039C619 /* NetCollegeTwo.swift */,
+				21AE53BA1C7B8C0800C49BD1 /* SecondVCItem.swift */,
+				21AE53B91C7B8C0800C49BD1 /* SecondVCItem+CoreDataProperties.swift */,
+				D7A3E2381A8290E3006D8C87 /* AppDelegate.swift */,
+				2100C6D81C84C34800FDE0BD /* TableViewController.swift */,
 				D7A3E2421A8290E3006D8C87 /* Images.xcassets */,
 				D7A3E2441A8290E3006D8C87 /* LaunchScreen.xib */,
 				D7A3E23A1A8290E3006D8C87 /* collegeBuilder.xcdatamodeld */,
@@ -256,11 +268,15 @@
 				215B9B5D1BF5135A0039C619 /* NetCollegeTwo.swift in Sources */,
 				21CC2E2B1C59470500A52372 /* Item.swift in Sources */,
 				D7A3E2391A8290E3006D8C87 /* AppDelegate.swift in Sources */,
+				215391371CC556660064B412 /* ConsItem+CoreDataProperties.swift in Sources */,
 				21DD69C21BF2754E00C82BA2 /* NetCollege.swift in Sources */,
 				21A2D1E71C5FD9120041F374 /* CoredataTableViewViewController.swift in Sources */,
 				D7A3E23C1A8290E3006D8C87 /* collegeBuilder.xcdatamodeld in Sources */,
+				215391391CC556660064B412 /* ProsItem+CoreDataProperties.swift in Sources */,
+				2153913A1CC556660064B412 /* ProsItem.swift in Sources */,
 				D7D1477C1A8BCE7700A14D28 /* secondViewController.swift in Sources */,
 				21AE53BB1C7B8C0800C49BD1 /* SecondVCItem+CoreDataProperties.swift in Sources */,
+				215391381CC556660064B412 /* ConsItem.swift in Sources */,
 				21AE53BC1C7B8C0800C49BD1 /* SecondVCItem.swift in Sources */,
 				216C910F1C6E59F3002EFE98 /* Item+CoreDataProperties.swift in Sources */,
 				21AE53BE1C7B915B00C49BD1 /* DetailsVC.swift in Sources */,
