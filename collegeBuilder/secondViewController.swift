@@ -28,21 +28,17 @@ class secondViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet var imageView: UIImageView!
     var imagePicker = UIImagePickerController()
     
-    var selectedCollege : Item!
+    var selectedCollege : SecondVCItem!
     
     @IBOutlet var locationEditingTextField: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
-  
+    
     @IBOutlet var setDeadline: UIButton!
-
+    
     
     
     let coreDataDB = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-    
-    
-    var items:SecondVCItem!
-    
     
     override func viewDidLoad()
     {
@@ -53,7 +49,7 @@ class secondViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         locationEditingTextField.text = selectedCollege.location
         
-        if let collegeImage = selectedCollege.image {
+        if let collegeImage = selectedCollege.imageView {
             let collegeImageUI = UIImage(data: collegeImage)
             imageView.image = collegeImageUI
         }
@@ -65,13 +61,7 @@ class secondViewController: UIViewController, UIImagePickerControllerDelegate, U
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
         
-        guard let items = SecondVCItem.retrieveSpecifiedItem(self.selectedCollege, moc: coreDataDB!) else {
-            //return error
-            return
-        }
-        
-        self.items = items
-        let i = self.items
+        let i = selectedCollege
         
         guard let username = i.username else {
             usernameTextField.text = ""
@@ -87,7 +77,7 @@ class secondViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
         
         passwordTextField.text = password
-
+        
         
         guard let recTesting1 = i.teacherRec1 else {
             recTextField1.text = ""
@@ -95,7 +85,7 @@ class secondViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
         
         requiredTesting.text = recTesting1
-
+        
         
         guard let recTesting2 = i.teacherRec2 else {
             recTextField2.text = ""
@@ -127,10 +117,14 @@ class secondViewController: UIViewController, UIImagePickerControllerDelegate, U
             return
         }
         
+        guard let image = i.imageView else {
+            return
+        }
+        
         requiredTesting.text = testingRequired
-
-
-
+        
+        
+        
         
         usernameTextField.text = "\(i.username!)"
         passwordTextField.text = "\(i.password!)"
@@ -139,10 +133,12 @@ class secondViewController: UIViewController, UIImagePickerControllerDelegate, U
         recTextField3.text = "\(i.teacherRec3!)"
         essayNumber.text = "\(i.numberOfEssays!)"
         requiredTesting.text = "\(i.reqTesting!)"
-         dateTextField.text = "\(i.datepickertextfield!)"
-       // imageView.image = i.collegeImage
+        dateTextField.text = "\(i.datepickertextfield!)"
         
-      
+        
+        imageView.image = UIImage(data: image)
+        
+        
         commonApp!.selectedSegmentIndex = (Int)(i.commonApp!)
         letterOrForm!.selectedSegmentIndex = (Int)(i.letterOrForm!)
         
@@ -158,7 +154,7 @@ class secondViewController: UIViewController, UIImagePickerControllerDelegate, U
         {
             datePicker.hidden = true
             setDeadline.setTitle("Set Deadline", forState: UIControlState.Normal)
-
+            
         }
         else
         {
@@ -168,18 +164,32 @@ class secondViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     @IBAction func saveButton(sender: AnyObject)
     {
-        if items == nil
-        {
-            let storeDescription = NSEntityDescription.entityForName("SecondVCItem", inManagedObjectContext: coreDataDB!)
-            let _ = SecondVCItem(entity: storeDescription!, insertIntoManagedObjectContext: coreDataDB!)
-        }
+
         
-        _ = SecondVCItem(teacherRec1: recTextField1.text!, teacherRec2: recTextField2.text!, teacherRec3: recTextField3.text!, username: usernameTextField.text!, password: passwordTextField.text!, datepicker: datePicker, datepickertextfield: dateTextField.text!, reqTesting: requiredTesting.text!, numberOfEssays: essayNumber.text!, letterOrForm: letterOrForm.selectedSegmentIndex, commonApp: commonApp.selectedSegmentIndex /*NSNumber(bool: true)*/, collegeImage: imageView.image, location: locationEditingTextField.text!, name: self.selectedCollege.name!, inManagedObjectContext: coreDataDB!)
+        let result = self.selectedCollege
+        let moc = coreDataDB
+        
+        result.teacherRec1 = recTextField1.text
+        result.teacherRec2 = recTextField2.text
+        result.teacherRec3 = recTextField3.text
+        result.username = usernameTextField.text
+        result.password = passwordTextField.text
+        result.datepickertextfield = dateTextField.text
+        result.reqTesting = requiredTesting.text
+        result.numberOfEssays = essayNumber.text
+        result.letterOrForm = letterOrForm.selectedSegmentIndex
+        result.commonApp = commonApp.selectedSegmentIndex
+        result.location = locationEditingTextField.text
+        result.name = self.selectedCollege.name!
+        result.imageView = UIImagePNGRepresentation(imageView.image!)!
         
         var error: NSError?
         
-        do { try coreDataDB?.save() }
-        catch let error1 as NSError { error = error1 }
+        do {
+            try moc?.save()
+        } catch let error1 as NSError {
+            error = error1
+        }
         
         if let err = error
         {
@@ -193,53 +203,57 @@ class secondViewController: UIViewController, UIImagePickerControllerDelegate, U
             
             dismissViewControllerAnimated(true, completion: nil)
         }
+
+//        _ = SecondVCItem(teacherRec1: recTextField1.text!, teacherRec2: recTextField2.text!, teacherRec3: recTextField3.text!, username: usernameTextField.text!, password: passwordTextField.text!, datepicker: datePicker, datepickertextfield: dateTextField.text!, reqTesting: requiredTesting.text!, numberOfEssays: essayNumber.text!, letterOrForm: letterOrForm.selectedSegmentIndex, commonApp: commonApp.selectedSegmentIndex /*NSNumber(bool: true)*/, collegeImage: imageView.image, location: locationEditingTextField.text!, name: self.selectedCollege.name!, inManagedObjectContext: coreDataDB!)
+        
+
         
         
         
     }
     
-
-
     
-
     
-
     
-//    @IBAction func saveButton(sender: UIButton)
-//    {
-//        let newItem = SecondVCItem(teacherRec1: recTextField1.text!, teacherRec2: recTextField2.text!, teacherRec3: recTextField3.text!, username: usernameTextField.text!, password: passwordTextField.text!, datepicker: datePicker, datepickertextfield: dateTextField.text!, reqTesting: requiredTesting.text!, numberOfEssays: essayNumber.text!, letterOrForm: letterOrForm.selectedSegmentIndex, commonApp: commonApp.selectedSegmentIndex, image: UIImage(named: "Question"), location: locationEditingTextField.text!, inManagedObjectContext: self.coreDataDB!)
-//        
-//        self.items.append(newItem)
-//
-//        // CoreData save
-//        
-//        newItem.save(self.coreDataDB!)
-//        
-//        let username = "\(usernameTextField.text)"
-//        let password = "\(passwordTextField.text)"
-//        let numberOfEssays = "\(essayNumber.text)"
-//
-//        usernameTextField.text = username
-//        passwordTextField.text = password
-//        essayNumber.text = numberOfEssays
-////        navigationItem.title = selectedCollege.name
-//
-//        // Reload Coredata data
-//       // self.items = SecondVCItem().fetchAll(self.coreDataDB!)
-//        
-//        
-//        //self.items = SecondVCItem().fetchAll(self.coreDataDB!)
-//        //func fetchAll(managedObjectContext: NSManagedObjectContext) -> [SecondVCItem]
-//        
-//        self.items = SecondVCItem.fetchAll(self.coreDataDB!)
-//        
-//        
-//        
-//        // Reload TableView
-//        //self.collegeTableView.reloadData()
-//        
-//
-//   }
+    
+    
+    
+    
+    //    @IBAction func saveButton(sender: UIButton)
+    //    {
+    //        let newItem = SecondVCItem(teacherRec1: recTextField1.text!, teacherRec2: recTextField2.text!, teacherRec3: recTextField3.text!, username: usernameTextField.text!, password: passwordTextField.text!, datepicker: datePicker, datepickertextfield: dateTextField.text!, reqTesting: requiredTesting.text!, numberOfEssays: essayNumber.text!, letterOrForm: letterOrForm.selectedSegmentIndex, commonApp: commonApp.selectedSegmentIndex, image: UIImage(named: "Question"), location: locationEditingTextField.text!, inManagedObjectContext: self.coreDataDB!)
+    //
+    //        selectedCollege.append(newItem)
+    //
+    //        // CoreData save
+    //
+    //        newItem.save(self.coreDataDB!)
+    //
+    //        let username = "\(usernameTextField.text)"
+    //        let password = "\(passwordTextField.text)"
+    //        let numberOfEssays = "\(essayNumber.text)"
+    //
+    //        usernameTextField.text = username
+    //        passwordTextField.text = password
+    //        essayNumber.text = numberOfEssays
+    ////        navigationItem.title = selectedCollege.name
+    //
+    //        // Reload Coredata data
+    //       // selectedCollege = SecondVCItem().fetchAll(self.coreDataDB!)
+    //
+    //
+    //        //selectedCollege = SecondVCItem().fetchAll(self.coreDataDB!)
+    //        //func fetchAll(managedObjectContext: NSManagedObjectContext) -> [SecondVCItem]
+    //
+    //        selectedCollege = SecondVCItem.fetchAll(self.coreDataDB!)
+    //
+    //
+    //
+    //        // Reload TableView
+    //        //self.collegeTableView.reloadData()
+    //
+    //
+    //   }
     
     @IBAction func textFieldEditingDate(sender: UITextField)
     {
@@ -257,68 +271,68 @@ class secondViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         dateTextField.text = dateFormatter.stringFromDate(sender.date)
     }
- 
+    
     @IBAction func onTappedTeacherRec(sender: UIButton)
     {
         let recAlert = UIAlertController(title: "Add Teacher Recs", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
         
-            recAlert.addTextFieldWithConfigurationHandler { (textField) -> Void in
-                textField.placeholder = "Add First Teacher Name"
+        recAlert.addTextFieldWithConfigurationHandler { (textField) -> Void in
+            textField.placeholder = "Add First Teacher Name"
         }
-            recAlert.addTextFieldWithConfigurationHandler { (textField) -> Void in
-                textField.placeholder = "Add Second Teacher Name"
+        recAlert.addTextFieldWithConfigurationHandler { (textField) -> Void in
+            textField.placeholder = "Add Second Teacher Name"
         }
-            recAlert.addTextFieldWithConfigurationHandler { (textField) -> Void in
-                textField.placeholder = "Add Third Teacher Name"
+        recAlert.addTextFieldWithConfigurationHandler { (textField) -> Void in
+            textField.placeholder = "Add Third Teacher Name"
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
         recAlert.addAction(cancelAction)
-               
+        
         let addAction = UIAlertAction(title: "Add Teachers", style: .Default)
-        { (action) -> Void in
-            let firstTeacherField = (recAlert.textFields?[0])! as UITextField
-            let secondTeacherField = (recAlert.textFields?[1])! as UITextField
-            let thirdTeacherField = (recAlert.textFields?[2])! as UITextField
-            
-            
-            if firstTeacherField.text == ""
-            {
-                self.recTextField1.hidden = true
-                self.recButton1.hidden = true
-            }
-            else
-            {
-                self.recTextField1.hidden = false
-                self.recTextField1.text = firstTeacherField.text
-                self.recButton1.hidden = false
-            }
-            if  secondTeacherField.text == ""
-            {
-                self.recTextField2.hidden = true
-                self.recButton2.hidden = true
-            }
-            else
-            {
-                self.recTextField2.hidden = false
-                self.recTextField2.text = secondTeacherField.text
-                self.recButton2.hidden = false
-            }
-            if thirdTeacherField.text == ""
-            {
-                self.recTextField3.hidden = true
-                self.recTextField3.text = thirdTeacherField.text
-                self.recButton3.hidden = true
-            }
-            else
-            {
-                self.recTextField3.hidden = false
-                self.recTextField3.text = thirdTeacherField.text
-                self.recButton3.hidden  = false
-            }
-            
-            firstTeacherField.text = self.recTextField1.text
-            secondTeacherField.text = self.recTextField2.text
-            thirdTeacherField.text = self.recTextField3.text
+            { (action) -> Void in
+                let firstTeacherField = (recAlert.textFields?[0])! as UITextField
+                let secondTeacherField = (recAlert.textFields?[1])! as UITextField
+                let thirdTeacherField = (recAlert.textFields?[2])! as UITextField
+                
+                
+                if firstTeacherField.text == ""
+                {
+                    self.recTextField1.hidden = true
+                    self.recButton1.hidden = true
+                }
+                else
+                {
+                    self.recTextField1.hidden = false
+                    self.recTextField1.text = firstTeacherField.text
+                    self.recButton1.hidden = false
+                }
+                if  secondTeacherField.text == ""
+                {
+                    self.recTextField2.hidden = true
+                    self.recButton2.hidden = true
+                }
+                else
+                {
+                    self.recTextField2.hidden = false
+                    self.recTextField2.text = secondTeacherField.text
+                    self.recButton2.hidden = false
+                }
+                if thirdTeacherField.text == ""
+                {
+                    self.recTextField3.hidden = true
+                    self.recTextField3.text = thirdTeacherField.text
+                    self.recButton3.hidden = true
+                }
+                else
+                {
+                    self.recTextField3.hidden = false
+                    self.recTextField3.text = thirdTeacherField.text
+                    self.recButton3.hidden  = false
+                }
+                
+                firstTeacherField.text = self.recTextField1.text
+                secondTeacherField.text = self.recTextField2.text
+                thirdTeacherField.text = self.recTextField3.text
         }
         
         recAlert.addAction(addAction)
@@ -339,7 +353,7 @@ class secondViewController: UIViewController, UIImagePickerControllerDelegate, U
             //selectedCollege.location = recTextField1.text!
             
         }
-
+        
     }
     @IBAction func editRec2(sender: UIButton)
     {
@@ -354,7 +368,7 @@ class secondViewController: UIViewController, UIImagePickerControllerDelegate, U
             recButton2.setTitle("Edit", forState: UIControlState.Normal)
             //selectedCollege.location = recTextField2.text!
         }
-
+        
     }
     @IBAction func editRec3(sender: UIButton)
     {
@@ -369,7 +383,7 @@ class secondViewController: UIViewController, UIImagePickerControllerDelegate, U
             recButton3.setTitle("Edit", forState: UIControlState.Normal)
             //selectedCollege.location = recTextField3.text!
         }
-
+        
     }
     
     func dismissKeyboard()
@@ -377,7 +391,7 @@ class secondViewController: UIViewController, UIImagePickerControllerDelegate, U
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
-     
+    
     @IBAction func editLocationButtonTapped(sender: UIButton)
     {
         if locationEditingTextField.enabled == false
@@ -406,6 +420,6 @@ class secondViewController: UIViewController, UIImagePickerControllerDelegate, U
                 self.imageView.image = selectedImage
             }
         )
- 
+        
     }
 }

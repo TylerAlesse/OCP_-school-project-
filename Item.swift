@@ -12,7 +12,7 @@ class Item: NSManagedObject
         let entity = NSEntityDescription.entityForName("Item", inManagedObjectContext: managedObjectContext)!
         self.init(entity: entity, insertIntoManagedObjectContext: managedObjectContext)
         self.name = name
-       // self.image = image
+      //  self.image = image
         self.location = location
     }
 //
@@ -37,11 +37,12 @@ class Item: NSManagedObject
     /// - parameter managedObjectContext: CoreData Connection
     ///
     class func search(name: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> Item? {
-        let fetchRequest       = NSFetchRequest(entityName: "Item")
+        let fetchRequest = NSFetchRequest(entityName: "Item")
         fetchRequest.predicate = NSPredicate(format: "name = %@", name)
+        //fetchRequest.predicate = NSPredicate(format: "image = %@", image)
         
-        let result             = (try? managedObjectContext.executeFetchRequest(fetchRequest)) as? [Item]
-        return result?.first
+        let result = (try? managedObjectContext.executeFetchRequest(fetchRequest)) as? [Item]
+        return result?.last
     }
     
     /// Function to check duplicate item

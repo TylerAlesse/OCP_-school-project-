@@ -11,49 +11,57 @@ import CoreData
 
 class CoredataTableViewViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
 {
+  
+    
     @IBOutlet weak var collegeTableView: UITableView!
     var colleges = [College]()
     
     let coreDataDB = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
-    var items = [Item]()
+    var secondItems = [SecondVCItem]()
     
     override func viewDidLoad()
     {
+        print("ok")
         super.viewDidLoad()
-        
+          navigationItem.title = "My Applications"
         self.collegeTableView.tableFooterView = UIView()
         
-        /*
+        
         let exampleCollege = College(Name: "Example College", Location: "Unknown Location", NumberOfStudents: 100000, Image: UIImage(named: "Question")!)
         colleges.append(exampleCollege)
         
         let bradley = College(Name: "Bradley", Location: "Peoria", NumberOfStudents: 50000, Image: UIImage(named: "bradley")!)
         colleges.append(bradley)
-        */
         
-        //colleges = [exampleCollege, bradley]
         
-        let request = NSFetchRequest(entityName: "Item")
-        var results : [AnyObject]?
+        colleges = [exampleCollege, bradley]
+        
+        self.loadData()
+
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.loadData()
+    }
+    
+    private func loadData() {
+        let request = NSFetchRequest(entityName: String(SecondVCItem))
         
         do {
-            results = try coreDataDB!.executeFetchRequest(request)
+            let results = try coreDataDB?.executeFetchRequest(request) as! [SecondVCItem]
+            secondItems = results
         } catch {
-            results = nil
-        }
-        
-        if results != nil {
-            self.items = results as! [Item]
+            print("error")
         }
         
         self.collegeTableView.reloadData()
-        
-        
     }
     
     override func viewWillAppear(animated: Bool)
     {
+    
         collegeTableView.reloadData()
     }
     ///////////////////////////////Jimmy changed these
@@ -65,7 +73,7 @@ class CoredataTableViewViewController: UIViewController, UITableViewDataSource, 
 //        }
 //        else
 //        {
-            return items.count
+            return secondItems.count
 
       //  }
         
@@ -85,13 +93,18 @@ class CoredataTableViewViewController: UIViewController, UITableViewDataSource, 
 //        }
 //        else
 //        {
-        cell.textLabel?.text = items[indexPath.row].name
-        cell.detailTextLabel?.text = items[indexPath.row].location
+        cell.textLabel?.text = secondItems[indexPath.row].name
+        cell.detailTextLabel?.text = secondItems[indexPath.row].location
         //cell.accessoryType = .Checkmark
         
+        if self.secondItems[indexPath.row].imageView == nil {
+            cell.imageView?.image = UIImage(named: "Question")
+        } else {
+            cell.imageView?.image = UIImage(data: secondItems[indexPath.row].imageView!)
+        }
         
         
-        //cell.imageView?.image = items[indexPath.row].image as! NSData
+//
         //}
         return cell
     }
@@ -133,21 +146,22 @@ class CoredataTableViewViewController: UIViewController, UITableViewDataSource, 
                 
                 
                 // Use class "Item" to create a new CoreData object
-                let newItem = Item(name: nameTextField!, image: nil, location: locationTextField!, inManagedObjectContext: self.coreDataDB!)
+                let secondVCItem = SecondVCItem(teacherRec1: "", teacherRec2: "", teacherRec3: "", username: "", password: "", datepickertextfield: "", reqTesting: "", numberOfEssays: "", letterOrForm: NSNumber(bool: false), commonApp: NSNumber(bool: false), collegeImage: UIImage(named: "Question"), location: locationTextField!, name: nameTextField!, inManagedObjectContext: self.coreDataDB!)
                 
                 
                 // Add item to array
-                self.items.append(newItem)
+                self.secondItems.append(secondVCItem)
                 
                 // CoreData save
-                newItem.save(self.coreDataDB!)
+                secondVCItem.save(self.coreDataDB!)
                 
                 // Reload Coredata data
-                self.items = Item.fetchAll(self.coreDataDB!)
+                self.secondItems = SecondVCItem.fetchAll(self.coreDataDB!)
                 
                 // Reload TableView
                 self.collegeTableView.reloadData()
             }
+            
         }
         
         // No action, no need handler
@@ -165,69 +179,8 @@ class CoredataTableViewViewController: UIViewController, UITableViewDataSource, 
         addFormAlert.addAction(cancelButton)
         addFormAlert.addAction(saveButton)
         presentViewController(addFormAlert, animated: true, completion: nil)
-//        let alert = UIAlertController(title: "Add New College", message: nil, preferredStyle: .Alert)
-//        
-//        alert.addTextFieldWithConfigurationHandler { (textField) -> Void in
-//            textField.placeholder = "Add College Name Here"
-//        }
-//        
-//        alert.addTextFieldWithConfigurationHandler { (textField) -> Void in
-//            textField.placeholder = "Add College Location Here"
-//        }
-//        
-//        alert.addTextFieldWithConfigurationHandler { (textField) -> Void in
-//            textField.placeholder = "Add Number of Students Here"
-//        }
-//        
-//        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
-//        alert.addAction(cancelAction)
-//        
-//        let addAction = UIAlertAction(title: "Add", style: UIAlertActionStyle.Default) { (action) -> Void in
-//            let nameTextField = alert.textFields?[0]
-//            let locationTextField = alert.textFields?[1]
-//            let numberOfStudentsTextField = alert.textFields?[2]
-//            let image = alert.textFields?[3]
-//            
-//            let newCollege = College(Name: nameTextField!.text!, Location: locationTextField!.text!, NumberOfStudents: Int(numberOfStudentsTextField!.text!)!, Image: UIImage())
-//            
-//            if nameTextField!.text == ""
-//            {
-//                self.alertError("Unable to save", msg: "Item name can't be blank.")
-//            }
-//                // Check duplicate item name
-//            else if (Item.checkDuplicate(nameTextField!.text!, inManagedObjectContext: self.coreDataDB!))
-//            {
-//                self.alertError("Unable to save", msg: "There is already an item with name: \(nameTextField).")
-//            }
-//                // Save data
-//            else
-//            {
-//                // Use class "Item" to create a new CoreData object
-//                let newItem = items(entity: nameTextField?.text, insertIntoManagedObjectContext: self.coreDataDB!)
-//                
-//                // Add item to array
-//                self.items.append(newItem)
-//                
-//                // CoreData save
-//                newItem.save(self.coreDataDB!)
-//                
-//                // Reload Coredata data
-//                self.items = Item.fetchAll(self.coreDataDB!)
-//                
-//                // Reload TableView
-//                self.collegeTableView.reloadData()
-//            }
-//            
-//            self.colleges.append(newCollege)
-//            
-//            self.collegeTableView.reloadData()
-//        }
-//        
-//        alert.addAction(addAction)
-//        
-//        presentViewController(alert, animated: true, completion: nil)
+        
     }
-
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
     {
         return true
@@ -241,14 +194,15 @@ class CoredataTableViewViewController: UIViewController, UITableViewDataSource, 
             collegeTableView.reloadData()
         }
     }
-    
+    //beginning of swipe actions
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?
     {
+        
         let editSwipeButton = UITableViewRowAction(style: .Default, title: "Edit Name") { (action, indexPath) in
-            let currentName = self.items[indexPath.row]
+            let currentName = self.secondItems[indexPath.row]
             
-            let alertEdit   = UIAlertController(title: "Editing item", message: "Change item name", preferredStyle: .Alert)
-            let saveButton  = UIAlertAction(title: "Save", style: .Default) { (action) in
+            let alertEdit = UIAlertController(title: "Editing item", message: "Change item name", preferredStyle: .Alert)
+            let saveButton = UIAlertAction(title: "Save", style: .Default) { (action) in
                 let newItemName = (alertEdit.textFields![0] ).text
                 
                 // Check if name is empty
@@ -272,7 +226,7 @@ class CoredataTableViewViewController: UIViewController, UITableViewDataSource, 
                     item?.save(self.coreDataDB!)
                     
                     // Reload Coredata data
-                    self.items = Item.fetchAll(self.coreDataDB!)
+                    self.secondItems = SecondVCItem.fetchAll(self.coreDataDB!)
                     
                     // Reload TableView
                     self.collegeTableView.reloadData()
@@ -297,14 +251,14 @@ class CoredataTableViewViewController: UIViewController, UITableViewDataSource, 
         
         let collegeFinishedSwipe = UITableViewRowAction(style: .Default, title: "Done")
         { (action, indexPath) in
-            let cellDone = self.items[indexPath.row]
+            let cellDone = self.secondItems[indexPath.row]
             
             //if cellDone.objectIDsForRelationshipNamed(<#T##key: String##String#>)
         }
         
         let deleteSwipedButton = UITableViewRowAction(style: .Normal, title: "Delete") { (action, indexPath) in
             
-            let recAlert = UIAlertController(title: "Are You Sure You Want To delete \(self.items[indexPath.row].name!)", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+            let recAlert = UIAlertController(title: "Are You Sure You Want To delete \(self.secondItems[indexPath.row].name!)", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
 
             let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
             recAlert.addAction(cancelAction)
@@ -312,17 +266,17 @@ class CoredataTableViewViewController: UIViewController, UITableViewDataSource, 
             let addAction = UIAlertAction(title: "Delete", style: .Default)
         {(action) -> Void in
             // Find item
-            let itemDelete = self.items[indexPath.row]
+            let itemDelete = self.secondItems[indexPath.row]
             
             // Delete item in CoreData
-            itemDelete.destroy(self.coreDataDB!)
+            //SecondVCItem.destroy(self.coreDataDB!)
             
             // Save item
             itemDelete.save(self.coreDataDB!)
             
             // Tableview always load data from "items" array.
             // If you delete a item from CoreData you need reload array data.
-            self.items = Item.fetchAll(self.coreDataDB!)
+            self.secondItems = SecondVCItem.fetchAll(self.coreDataDB!)
             
             // Remove item from TableView
             self.collegeTableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
@@ -336,9 +290,12 @@ class CoredataTableViewViewController: UIViewController, UITableViewDataSource, 
        collegeFinishedSwipe.backgroundColor = UIColor.blueColor()
         
         //Took out editSwipteButton
-        return [deleteSwipedButton, collegeFinishedSwipe]
+        
+        return [deleteSwipedButton, editSwipeButton, collegeFinishedSwipe]
+        return [UITableViewRowAction()]
+
     }
-    
+    //end of swipe actions
     func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool
     {
         return true
@@ -346,6 +303,7 @@ class CoredataTableViewViewController: UIViewController, UITableViewDataSource, 
     
     func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath)
     {
+        
         let collegeList = colleges[sourceIndexPath.row]
         colleges.removeAtIndex(sourceIndexPath.row)
         colleges.insert(collegeList, atIndex: destinationIndexPath.row)
@@ -359,7 +317,7 @@ class CoredataTableViewViewController: UIViewController, UITableViewDataSource, 
             let nvc = segue.destinationViewController as! secondViewController
             let indexPath = collegeTableView.indexPathForSelectedRow!
             
-            nvc.selectedCollege = items[indexPath.row]
+            nvc.selectedCollege = secondItems[indexPath.row]
         }
     }
     
