@@ -51,7 +51,8 @@ class SecondVCItem: NSManagedObject
         let listagemCoreData = NSFetchRequest(entityName: "SecondVCItem")
         
         // Sort alphabetical by field "name"
-        
+        let orderByName = NSSortDescriptor(key: "name", ascending: true, selector: "caseInsensitiveCompare:")
+        listagemCoreData.sortDescriptors = [orderByName]
         // Get items from CoreData
         return (try? managedObjectContext.executeFetchRequest(listagemCoreData)) as? [SecondVCItem] ?? []
     }
@@ -67,9 +68,24 @@ class SecondVCItem: NSManagedObject
     }
 //
 //    
-    func destroy(managedObjectContext: NSManagedObjectContext) {
-        managedObjectContext.deleteObject(self)
+    class func destroy(managedObjectContext: NSManagedObjectContext, object: SecondVCItem) {
+        managedObjectContext.deleteObject(object)
     }
+    
+    class func done(managedObjectContext: NSManagedObjectContext, object: SecondVCItem)
+    {
+        
+    }
+    
+    class func search(name: String, inManagedObjectContext managedObjectContext: NSManagedObjectContext) -> SecondVCItem? {
+        let fetchRequest = NSFetchRequest(entityName: "SecondVCItem")
+        fetchRequest.predicate = NSPredicate(format: "name = %@", name)
+        //fetchRequest.predicate = NSPredicate(format: "image = %@", image)
+        
+        let result = (try? managedObjectContext.executeFetchRequest(fetchRequest)) as? [SecondVCItem]
+        return result?.last
+    }
+
 ////
 ////    
 //    func save(moc: NSManagedObjectContext) {

@@ -28,14 +28,14 @@ class CoredataTableViewViewController: UIViewController, UITableViewDataSource, 
         self.collegeTableView.tableFooterView = UIView()
         
         
-        let exampleCollege = College(Name: "Example College", Location: "Unknown Location", NumberOfStudents: 100000, Image: UIImage(named: "Question")!)
-        colleges.append(exampleCollege)
+//        let exampleCollege = College(Name: "Example College", Location: "Unknown Location", NumberOfStudents: 100000, Image: UIImage(named: "Question")!)
+//        colleges.append(exampleCollege)
         
-        let bradley = College(Name: "Bradley", Location: "Peoria", NumberOfStudents: 50000, Image: UIImage(named: "bradley")!)
-        colleges.append(bradley)
+//        let bradley = College(Name: "Bradley", Location: "Peoria", NumberOfStudents: 50000, Image: UIImage(named: "bradley")!)
+//        colleges.append(bradley)
         
         
-        colleges = [exampleCollege, bradley]
+//        colleges = [exampleCollege]
         
         self.loadData()
 
@@ -56,6 +56,28 @@ class CoredataTableViewViewController: UIViewController, UITableViewDataSource, 
             print("error")
         }
         
+        if secondItems.count == 0 {
+            self.addFakeData()
+        }
+        
+        self.collegeTableView.reloadData()
+    }
+    
+    private func addFakeData() {
+        // Use class "Item" to create a new CoreData object
+        let secondVCItem = SecondVCItem(teacherRec1: "Mr. Harper", teacherRec2: "Ms. Harper", teacherRec3: "Dr. Harper", username: "Student123", password: "password123", datepickertextfield: " August 22", reqTesting: "ACT", numberOfEssays: "2", letterOrForm: NSNumber(bool: false), commonApp: NSNumber(bool: false), collegeImage: UIImage(named: "Harper"), location: "Illinois", name: "Harper", inManagedObjectContext: self.coreDataDB!)
+        
+        
+        // Add item to array
+        self.secondItems.append(secondVCItem)
+        
+        // CoreData save
+        secondVCItem.save(self.coreDataDB!)
+        
+        // Reload Coredata data
+        self.secondItems = SecondVCItem.fetchAll(self.coreDataDB!)
+        
+        // Reload TableView
         self.collegeTableView.reloadData()
     }
     
@@ -95,6 +117,7 @@ class CoredataTableViewViewController: UIViewController, UITableViewDataSource, 
 //        {
         cell.textLabel?.text = secondItems[indexPath.row].name
         cell.detailTextLabel?.text = secondItems[indexPath.row].location
+        //cell.accessoryType = .Checkmark
         //cell.accessoryType = .Checkmark
         
         if self.secondItems[indexPath.row].imageView == nil {
@@ -194,6 +217,8 @@ class CoredataTableViewViewController: UIViewController, UITableViewDataSource, 
             collegeTableView.reloadData()
         }
     }
+    
+    
     //beginning of swipe actions
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?
     {
@@ -221,9 +246,9 @@ class CoredataTableViewViewController: UIViewController, UITableViewDataSource, 
                     // Save CoreData
                 else {
                     // Update item name
-                    let item = Item.search("name", inManagedObjectContext: self.coreDataDB!)
-                    item?.name = newItemName!
-                    item?.save(self.coreDataDB!)
+                    let itemTwo = SecondVCItem.search("name", inManagedObjectContext: self.coreDataDB!)
+                    itemTwo?.name = newItemName!
+                    itemTwo?.save(self.coreDataDB!)
                     
                     // Reload Coredata data
                     self.secondItems = SecondVCItem.fetchAll(self.coreDataDB!)
@@ -251,9 +276,24 @@ class CoredataTableViewViewController: UIViewController, UITableViewDataSource, 
         
         let collegeFinishedSwipe = UITableViewRowAction(style: .Default, title: "Done")
         { (action, indexPath) in
-            let cellDone = self.secondItems[indexPath.row]
             
-            //if cellDone.objectIDsForRelationshipNamed(<#T##key: String##String#>)
+            let section = indexPath.section
+            let numberOfRows = tableView.numberOfRowsInSection(section)
+            for row in 0..<numberOfRows {
+                if let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section)) {
+                    cell.accessoryType = row == indexPath.row ? .Checkmark : .None
+                }
+            }
+//           let itemDone = self.secondItems[indexPath.row]
+//            
+//            if cell.accessoryType == nil
+//            {
+//            itemDone.accessibilityActivate()
+//            }
+//            else
+//            {
+//            itemDone.accessibilityDecrement()
+//            }
         }
         
         let deleteSwipedButton = UITableViewRowAction(style: .Normal, title: "Delete") { (action, indexPath) in
@@ -269,7 +309,7 @@ class CoredataTableViewViewController: UIViewController, UITableViewDataSource, 
             let itemDelete = self.secondItems[indexPath.row]
             
             // Delete item in CoreData
-            //SecondVCItem.destroy(self.coreDataDB!)
+            SecondVCItem.destroy(self.coreDataDB!, object: itemDelete)
             
             // Save item
             itemDelete.save(self.coreDataDB!)
@@ -291,8 +331,8 @@ class CoredataTableViewViewController: UIViewController, UITableViewDataSource, 
         
         //Took out editSwipteButton
         
-        return [deleteSwipedButton, editSwipeButton, collegeFinishedSwipe]
-        return [UITableViewRowAction()]
+        return [deleteSwipedButton]
+      //  return [UITableViewRowAction()]
 
     }
     //end of swipe actions
